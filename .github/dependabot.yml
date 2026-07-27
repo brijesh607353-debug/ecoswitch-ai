@@ -1,0 +1,57 @@
+version: 2
+
+updates:
+  # Root workspace and all pnpm packages
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "automated"
+    groups:
+      # Group all Radix UI updates together
+      radix-ui:
+        patterns:
+          - "@radix-ui/*"
+      # Group all TanStack updates together
+      tanstack:
+        patterns:
+          - "@tanstack/*"
+      # Group all type definitions together
+      type-definitions:
+        patterns:
+          - "@types/*"
+      # Group minor/patch TypeScript tooling bumps
+      typescript-tooling:
+        patterns:
+          - "typescript"
+          - "tsx"
+          - "vite"
+          - "esbuild"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      # Pin major versions manually — review before bumping
+      - dependency-name: "express"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "drizzle-orm"
+        update-types: ["version-update:semver-major"]
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "automated"

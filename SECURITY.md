@@ -1,36 +1,40 @@
-# Security Policy
+# Security Policy — EcoSwitch AI
 
 ## Reporting a Vulnerability
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-If you discover a security vulnerability in EcoSwitch AI, we appreciate your help in disclosing it to us responsibly.
+If you discover a security vulnerability, report it privately so we can fix it before it is exploited.
 
 ### How to Report
 
-Send a detailed report to:
+**Option 1 — GitHub Private Vulnerability Reporting (preferred)**
+Use [GitHub's private security advisory feature](https://github.com/brijesh607353-debug/ecoswitch-ai/security/advisories/new).
 
-**📧 security@ecoswitch.ai** *(replace with your actual security contact)*
+**Option 2 — Email**
+Send a report to: `security@ecoswitch.ai` *(replace with your actual contact)*
 
-Please include as much of the following as possible:
+Please include:
 
-- **Type of vulnerability** (e.g. SQL injection, XSS, authentication bypass, exposed credentials)
-- **Location** — file path, endpoint, or component affected
-- **Steps to reproduce** — a minimal, clear reproduction path
-- **Proof of concept** — code snippet, curl command, or screenshot if safe to share
-- **Potential impact** — what an attacker could do if this were exploited
-- **Suggested fix** (optional, but appreciated)
+| Field | Description |
+|-------|-------------|
+| **Type** | e.g. SQL injection, XSS, auth bypass, secret exposure |
+| **Location** | File path, endpoint, or component |
+| **Steps to reproduce** | Minimal, reliable reproduction steps |
+| **Proof of concept** | Code snippet or curl command (if safe to share) |
+| **Impact** | What an attacker could do if exploited |
+| **Suggested fix** | Optional — appreciated but not required |
 
-### What to Expect
+### Response Timeline
 
-| Timeline | Action |
-|----------|--------|
-| **Within 48 hours** | Acknowledgement of your report |
-| **Within 7 days** | Initial assessment and severity triage |
-| **Within 30 days** | Patch released (for confirmed vulnerabilities) |
-| **After patch** | Public disclosure coordinated with you |
+| Milestone | Timeline |
+|-----------|---------|
+| Acknowledgement | Within 48 hours |
+| Initial triage | Within 7 days |
+| Fix released | Within 30 days (for confirmed vulnerabilities) |
+| Public disclosure | Coordinated with reporter after fix |
 
-We will keep you informed throughout the process and credit you in the release notes (unless you prefer to remain anonymous).
+We follow a **90-day coordinated disclosure** policy.
 
 ---
 
@@ -38,45 +42,55 @@ We will keep you informed throughout the process and credit you in the release n
 
 | Version | Supported |
 |---------|-----------|
-| Latest (`main`) | ✅ Yes |
-| Older releases | ❌ No — please upgrade |
+| Latest (`main`) | ✅ |
+| Older releases | ❌ — upgrade to latest |
+
+---
+
+## Current Security Posture (v0.1.0)
+
+This section is updated with every release.
+
+| Area | Status | Notes |
+|------|--------|-------|
+| Authentication | ⚠️ None | All endpoints unauthenticated — do not expose to the public internet |
+| HTTPS / TLS | ⚠️ Not configured | Use a reverse proxy (nginx, Caddy) or platform-level TLS in production |
+| Input validation | ✅ Zod | All API inputs validated via Zod schemas |
+| SQL injection | ✅ Protected | Drizzle ORM uses parameterised queries |
+| Secret management | ✅ Env vars | No credentials in code; `.env*` files are git-ignored |
+| Dependency audit | 🔨 Not automated | Dependabot PRs will flag vulnerable dependencies |
+| Rate limiting | 🔨 Planned | To be added in v0.2.0 |
+| CORS | ✅ Enabled | `cors` middleware applied; restrict `origin` in production |
 
 ---
 
 ## Security Best Practices for Contributors
 
-When contributing to this project, please follow these guidelines:
+### Secrets & Credentials
 
-### Environment Variables & Secrets
-
-- **Never** commit `.env`, `.env.local`, or any file containing real credentials
-- Use `.env.example` to document required variables with empty values
-- The `.gitignore` already excludes all common secret file patterns — do not remove those entries
-- Rotate any credentials immediately if you suspect they were accidentally committed
+- **Never commit** `.env`, `.env.local`, or files containing real credentials
+- `.env.example` uses only empty values — it is safe to commit
+- Rotate any credential immediately if you suspect accidental exposure
+- Firebase Admin SDK keys (`service-account.json`) are git-ignored — never commit them
 
 ### Dependencies
 
-- Pin major versions and use the `catalog:` entries in `pnpm-workspace.yaml`
 - Run `pnpm audit` before submitting a PR that adds or updates dependencies
-- Avoid dependencies with known CVEs or that are abandoned
+- Avoid packages with known CVEs or that are unmaintained
+- Use `catalog:` pins in `pnpm-workspace.yaml` for shared deps
 
 ### Input Validation
 
-- All API inputs must be validated with Zod schemas (generated from the OpenAPI spec)
-- Never trust client-supplied data without server-side validation
-- Parameterise all database queries — never concatenate user input into SQL strings
+- All API inputs must be validated with Zod schemas (generated from OpenAPI where possible)
+- Never concatenate user input into SQL strings — Drizzle's query builder prevents this
+- Strip sensitive fields from Pino log output (query params are already stripped)
 
-### Authentication & Authorisation
+### Authentication (When Implemented)
 
-- Do not expose internal IDs in API responses where avoidable
-- Always verify session tokens server-side before returning sensitive data
-
----
-
-## Vulnerability Disclosure Timeline
-
-We follow a **90-day coordinated disclosure** policy. If we cannot release a fix within 90 days, we will notify you and agree on an extension or partial disclosure.
+- Verify Firebase ID tokens server-side using the Admin SDK on every protected request
+- Never trust client-supplied user IDs — always derive identity from the verified token
+- Use HTTPS-only in production — never transmit tokens over plain HTTP
 
 ---
 
-*This policy is inspired by industry standards from [GitHub](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository) and [Responsible Disclosure](https://cheatsheetseries.owasp.org/cheatsheets/Vulnerability_Disclosure_Cheat_Sheet.html).*
+*Inspired by [GitHub's security advisory process](https://docs.github.com/en/code-security) and [OWASP Responsible Disclosure](https://cheatsheetseries.owasp.org/cheatsheets/Vulnerability_Disclosure_Cheat_Sheet.html).*

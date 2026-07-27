@@ -1,9 +1,7 @@
 # Contributing to EcoSwitch AI
 
 First off — **thank you** for taking the time to contribute! 🎉
-Every bug report, feature idea, and line of code helps make EcoSwitch AI better.
-
-This guide covers everything you need to know to get started.
+EcoSwitch AI is a smart energy waste reduction system built for the vivo Ignite Innovation Challenge 2026. Every bug report, feature idea, and line of code helps make it better.
 
 ---
 
@@ -11,22 +9,17 @@ This guide covers everything you need to know to get started.
 
 - [Code of Conduct](#code-of-conduct)
 - [How Can I Contribute?](#how-can-i-contribute)
-  - [Reporting Bugs](#reporting-bugs)
-  - [Suggesting Features](#suggesting-features)
-  - [Your First Code Contribution](#your-first-code-contribution)
 - [Development Setup](#development-setup)
 - [Branching Strategy](#branching-strategy)
 - [Commit Message Convention](#commit-message-convention)
 - [Pull Request Process](#pull-request-process)
 - [Coding Standards](#coding-standards)
-- [Project Structure](#project-structure)
 
 ---
 
 ## Code of Conduct
 
-This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md).
-By participating, you agree to uphold these standards. Please report unacceptable behaviour to the maintainers.
+This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). By participating, you agree to uphold these standards.
 
 ---
 
@@ -34,30 +27,20 @@ By participating, you agree to uphold these standards. Please report unacceptabl
 
 ### Reporting Bugs
 
-Before submitting a bug, please check the [existing issues](https://github.com/YOUR_USERNAME/ecoswitch-ai/issues) to avoid duplicates.
+Check [existing issues](https://github.com/brijesh607353-debug/ecoswitch-ai/issues) first.
+Use the **Bug Report** issue template and include steps to reproduce, expected vs. actual behaviour, and your environment details.
 
-When filing a bug report, include:
-
-- **A clear, descriptive title**
-- **Steps to reproduce** — the more detail, the better
-- **Expected behaviour** vs **actual behaviour**
-- **Environment** — OS, Node.js version, browser (if applicable)
-- **Screenshots or logs** — attach them if relevant
+> **Do not report security vulnerabilities in public issues** — see [SECURITY.md](./SECURITY.md).
 
 ### Suggesting Features
 
-Feature requests are welcome! Open an issue with:
+Use the **Feature Request** issue template. Be clear about the problem it solves and who benefits.
 
-- **Problem statement** — what pain point does this solve?
-- **Proposed solution** — your idea in plain language
-- **Alternatives considered** — any other approaches you thought of
+### Good First Issues
 
-### Your First Code Contribution
-
-Looking for a good first issue? Search for issues labelled:
-
-- [`good first issue`](https://github.com/YOUR_USERNAME/ecoswitch-ai/labels/good%20first%20issue)
-- [`help wanted`](https://github.com/YOUR_USERNAME/ecoswitch-ai/labels/help%20wanted)
+Look for issues labelled:
+- [`good first issue`](https://github.com/brijesh607353-debug/ecoswitch-ai/labels/good%20first%20issue)
+- [`help wanted`](https://github.com/brijesh607353-debug/ecoswitch-ai/labels/help%20wanted)
 
 ---
 
@@ -65,9 +48,9 @@ Looking for a good first issue? Search for issues labelled:
 
 ### Prerequisites
 
-- **Node.js** ≥ 20
+- **Node.js** ≥ 20 ([download](https://nodejs.org/))
 - **pnpm** ≥ 9 — `npm install -g pnpm`
-- **PostgreSQL** ≥ 15
+- **PostgreSQL** ≥ 15 ([download](https://www.postgresql.org/download/))
 
 ### Steps
 
@@ -77,29 +60,34 @@ git clone https://github.com/YOUR_USERNAME/ecoswitch-ai.git
 cd ecoswitch-ai
 
 # 2. Add the upstream remote
-git remote add upstream https://github.com/ORIGINAL_OWNER/ecoswitch-ai.git
+git remote add upstream https://github.com/brijesh607353-debug/ecoswitch-ai.git
 
-# 3. Install dependencies
+# 3. Install all workspace dependencies
 pnpm install
 
 # 4. Set up environment variables
 cp .env.example .env.local
-# Edit .env.local with your local values
+# Fill in DATABASE_URL and SESSION_SECRET at minimum
 
-# 5. Push the database schema (development only)
+# 5. Push DB schema to your local database
 pnpm --filter @workspace/db run push
 
 # 6. Start the API server
 pnpm --filter @workspace/api-server run dev
+
+# 7. Verify it's working
+curl http://localhost:5000/api/healthz
+# → {"status":"ok"}
 ```
 
-### Codegen
-
-After editing `lib/api-spec/openapi.yaml`, regenerate the typed client:
+### After Editing the OpenAPI Spec
 
 ```bash
+# Regenerate React Query hooks and Zod schemas
 pnpm --filter @workspace/api-spec run codegen
 ```
+
+Do not edit generated files in `lib/api-client-react/src/generated/` or `lib/api-zod/src/generated/` — they are overwritten on every codegen run.
 
 ---
 
@@ -107,14 +95,14 @@ pnpm --filter @workspace/api-spec run codegen
 
 | Branch | Purpose |
 |--------|---------|
-| `main` | Stable, production-ready code |
+| `main` | Stable, production-ready |
 | `feat/*` | New features |
 | `fix/*` | Bug fixes |
-| `docs/*` | Documentation changes only |
-| `chore/*` | Tooling, dependencies, refactoring |
-| `test/*` | Test additions or fixes |
+| `docs/*` | Documentation only |
+| `chore/*` | Tooling, deps, refactoring |
+| `test/*` | Tests |
 
-Always branch off `main` and target `main` in your PR.
+Always branch from `main` and target `main` in your PR.
 
 ---
 
@@ -123,33 +111,26 @@ Always branch off `main` and target `main` in your PR.
 We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
-<type>(<optional scope>): <short summary>
-
-[optional body]
-
-[optional footer]
+<type>(<scope>): <short summary>
 ```
-
-**Types:**
 
 | Type | When to use |
 |------|-------------|
-| `feat` | A new feature |
-| `fix` | A bug fix |
-| `docs` | Documentation changes only |
-| `style` | Formatting, whitespace (no logic change) |
-| `refactor` | Code restructuring (no feature/fix) |
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `docs` | Documentation only |
+| `style` | Formatting, whitespace |
+| `refactor` | Code restructuring (no logic change) |
 | `test` | Adding or fixing tests |
-| `chore` | Build process, dependency updates |
-| `perf` | Performance improvements |
+| `chore` | Build, deps, tooling |
+| `perf` | Performance improvement |
 
 **Examples:**
-
 ```
-feat(api): add energy plan comparison endpoint
-fix(db): resolve connection timeout on cold start
-docs: update environment variable table in README
-chore: bump drizzle-orm to v0.32
+feat(api): add POST /api/readings endpoint for ESP32 sensor data
+fix(db): resolve connection pool exhaustion under load
+docs(iot): add circuit wiring diagram to IOT.md
+chore: bump drizzle-orm to v0.33
 ```
 
 ---
@@ -162,49 +143,45 @@ chore: bump drizzle-orm to v0.32
    git rebase upstream/main
    ```
 
-2. **Run the full typecheck** — PRs must pass:
+2. **TypeScript must pass:**
    ```bash
    pnpm run typecheck
    ```
 
-3. **Keep PRs focused** — one logical change per PR. Large PRs are hard to review.
+3. **Run codegen** if you edited the OpenAPI spec:
+   ```bash
+   pnpm --filter @workspace/api-spec run codegen
+   ```
 
 4. **Fill in the PR template** — describe what changed and why.
 
-5. **Link related issues** — use `Closes #123` in the PR description.
+5. **Link related issues** — use `Closes #123` in the description.
 
-6. A maintainer will review within **5 business days**. Be responsive to feedback.
+6. Keep PRs focused — one logical change per PR.
 
-7. Once approved, a maintainer will **squash-merge** your PR.
+7. A maintainer will review within **5 business days**.
 
 ---
 
 ## Coding Standards
 
-- **TypeScript strict mode** is enabled — no `any`, no implicit `undefined`
-- **Never use `console.log`** in server code — use `req.log` in route handlers or the `logger` singleton
-- **Validate all inputs** — use Zod schemas (generated from the OpenAPI spec where possible)
-- **Keep files small** — split large files into focused modules
-- **Use `catalog:` pins** in `pnpm-workspace.yaml` for shared dependencies — check before adding a new dep
+- **TypeScript strict mode** — no `any`, no implicit `undefined`
+- **Never `console.log` in server code** — use `req.log` in route handlers, `logger` singleton elsewhere (see `artifacts/api-server/src/lib/logger.ts`)
+- **Validate all inputs** — use Zod schemas (generated from OpenAPI where possible, or hand-written for internal logic)
+- **Contract-first** — define new API endpoints in `openapi.yaml` before implementing the handler
+- **Shared logic in `lib/*`** — `artifacts/*` must never import from each other
+- **`catalog:` pins** — check `pnpm-workspace.yaml` before adding a new dependency; use `catalog:` if the package is already pinned
 
-### Linting & Formatting
+### Formatting
 
 ```bash
-# Format with Prettier
+# Format all files
 pnpm prettier --write .
 
-# TypeScript check
-pnpm run typecheck
+# Check formatting (CI uses this)
+pnpm prettier --check .
 ```
 
 ---
 
-## Project Structure
-
-See the [README Project Structure section](./README.md#project-structure) for a map of where things live.
-
-Key rule: **`artifacts/*` packages must never import from each other** — shared logic belongs in `lib/*`.
-
----
-
-Thank you again for contributing. You're awesome. 🌱
+Thank you for helping build EcoSwitch AI! 🌱

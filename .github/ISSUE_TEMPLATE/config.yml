@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: 🔒 Security Vulnerability
+    url: https://github.com/brijesh607353-debug/ecoswitch-ai/blob/main/SECURITY.md
+    about: Please report security vulnerabilities privately — do not open a public issue.
+  - name: 💬 General Discussion
+    url: https://github.com/brijesh607353-debug/ecoswitch-ai/discussions
+    about: Questions, ideas, and general conversation.

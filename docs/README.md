@@ -1,26 +1,29 @@
 # EcoSwitch AI — Documentation
 
-Welcome to the EcoSwitch AI documentation hub. This folder contains in-depth guides that go beyond the top-level README.
+This folder contains in-depth technical documentation for EcoSwitch AI.
 
 ---
 
-## Contents
+## Index
 
-| Document | Description |
-|----------|-------------|
-| _(coming soon)_ `architecture.md` | System architecture overview and data flow diagrams |
-| _(coming soon)_ `api.md` | Detailed API reference and example requests |
-| _(coming soon)_ `database-schema.md` | Database schema, relationships, and migration guide |
-| _(coming soon)_ `deployment.md` | Production deployment guide (Docker, cloud providers) |
-| _(coming soon)_ `testing.md` | Testing strategy, running tests, and writing new tests |
-| _(coming soon)_ `adr/` | Architecture Decision Records |
+| Document | Status | Description |
+|----------|--------|-------------|
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | ✅ Current | Monorepo layout, system design, contract-first API pattern |
+| [API.md](./API.md) | ✅ Current | Endpoint reference, codegen workflow, planned routes |
+| [FIREBASE.md](./FIREBASE.md) | 🔨 Planned | Firebase setup guide (integration not yet implemented) |
+| [IOT.md](./IOT.md) | 🔨 Planned | ESP32 sensor integration architecture |
+| [PWA.md](./PWA.md) | 🔨 Planned | Progressive Web App implementation plan |
+| [DEPLOYMENT.md](./DEPLOYMENT.md) | ✅ Current | API server and database deployment (Docker, Railway, VPS) |
+| [TESTING.md](./TESTING.md) | 🔨 Planned | Testing strategy and setup (no tests exist yet) |
+| [PERFORMANCE.md](./PERFORMANCE.md) | ✅ Current | Built-in performance choices + planned benchmarks |
+| [KNOWN_LIMITATIONS.md](./KNOWN_LIMITATIONS.md) | ✅ Current | Honest record of what is not yet implemented |
 
 ---
 
 ## Quick Links
 
-- [Main README](../README.md)
-- [OpenAPI Spec](../lib/api-spec/openapi.yaml) — single source of truth for all API contracts
+- [Main README](../README.md) — project overview and getting started
+- [OpenAPI Spec](../lib/api-spec/openapi.yaml) — single source of truth for API contracts
 - [Contributing Guide](../CONTRIBUTING.md)
 - [Security Policy](../SECURITY.md)
 - [Changelog](../CHANGELOG.md)
@@ -29,10 +32,7 @@ Welcome to the EcoSwitch AI documentation hub. This folder contains in-depth gui
 
 ## Adding Documentation
 
-To add a new doc:
-
-1. Create a Markdown file in this `docs/` folder (e.g. `docs/deployment.md`)
-2. Add it to the table above
+1. Create a Markdown file in this `docs/` folder
+2. Add it to the index table above with its status
 3. Link to it from the relevant section of the main README
-
-Keep documentation close to the code it describes — if a doc is specific to one package (e.g. the API server), consider adding it inside that package's folder as well.
+4. Only document what **actually exists** — use status labels (`✅ Current`, `🔨 Planned`) to be explicit

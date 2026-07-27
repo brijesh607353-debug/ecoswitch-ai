@@ -1,0 +1,89 @@
+name: 🐛 Bug Report
+description: Report a reproducible bug in EcoSwitch AI
+title: "bug: "
+labels: ["bug", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in as much detail as possible.
+        **Do not report security vulnerabilities here** — see [SECURITY.md](../../SECURITY.md).
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this is not a duplicate
+          required: true
+        - label: I am running the latest version from `main`
+          required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the project is affected?
+      options:
+        - API Server
+        - Database / Drizzle
+        - Frontend / UI Sandbox
+        - OpenAPI / Codegen
+        - Build / TypeScript
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug description
+      description: A clear and concise description of the bug.
+      placeholder: When I do X, Y happens. I expected Z.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps that reliably reproduce the bug.
+      placeholder: |
+        1. Clone the repo
+        2. Run `pnpm --filter @workspace/api-server run dev`
+        3. Call `GET /api/healthz`
+        4. See error ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      placeholder: The endpoint should return { status "ok" }.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or error output
+      description: Paste any logs, stack traces, or error messages.
+      render: shell
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Fill in your environment details.
+      value: |
+        - OS:
+        - Node.js version:
+        - pnpm version:
+        - PostgreSQL version (if relevant):
+        - Browser (if frontend):
+    validations:
+      required: true

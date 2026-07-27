@@ -1,0 +1,309 @@
+You are working inside the actual EcoSwitch AI repository.
+
+IMPORTANT:
+Before making ANY changes, inspect the ENTIRE repository. Do not assume anything. Base every change ONLY on the code that actually exists.
+
+Repository:
+EcoSwitch AI
+Smart Energy Waste Reduction System
+Built for the vivo Ignite Innovation Challenge 2026.
+
+====================================================
+PRIMARY GOAL
+====================================================
+
+Transform this repository into a premium, production-quality open-source repository comparable to projects from Vercel, Supabase, Next.js, shadcn/ui, and Firebase.
+
+Do NOT invent features.
+
+Do NOT fabricate documentation.
+
+Everything must reflect the real implementation.
+
+====================================================
+STEP 1 — FULL PROJECT AUDIT
+====================================================
+
+Inspect every file and directory.
+
+Review:
+
+package.json
+
+workspace structure
+
+apps
+
+components
+
+hooks
+
+lib
+
+Firebase
+
+PWA
+
+IoT
+
+API
+
+Dashboard
+
+Analytics
+
+Reports
+
+Notifications
+
+Authentication
+
+Search
+
+PDF export
+
+Service Worker
+
+README
+
+Documentation
+
+Record exactly what exists.
+
+====================================================
+STEP 2 — REWRITE README
+====================================================
+
+Completely rewrite README.md.
+
+Current README describes a different project.
+
+Replace it with documentation describing the ACTUAL EcoSwitch AI implementation.
+
+Include:
+
+Hero banner
+
+Professional badges
+
+Project description
+
+Screenshots section
+
+Architecture overview
+
+Key Features
+
+Technology Stack
+
+Project Structure
+
+Installation
+
+Development
+
+Environment Variables
+
+Firebase Setup
+
+PWA Features
+
+IoT Architecture
+
+ESP32 Overview
+
+Dashboard Features
+
+Analytics
+
+Reports
+
+Notifications
+
+Search
+
+Offline Support
+
+PDF Export
+
+Roadmap
+
+Known Limitations
+
+Contributing
+
+Security
+
+License
+
+Only mention implemented features.
+
+Clearly label planned features separately.
+
+====================================================
+STEP 3 — GITHUB POLISH
+====================================================
+
+Review:
+
+LICENSE
+
+CHANGELOG
+
+CONTRIBUTING
+
+SECURITY
+
+CODE_OF_CONDUCT
+
+Issue Templates
+
+PR Template
+
+GitHub Actions
+
+Dependabot
+
+Improve everything where appropriate.
+
+====================================================
+STEP 4 — DOCUMENTATION
+====================================================
+
+Create or improve:
+
+ARCHITECTURE.md
+
+DEPLOYMENT.md
+
+FIREBASE.md
+
+IOT.md
+
+API.md
+
+TESTING.md
+
+PERFORMANCE.md
+
+KNOWN_LIMITATIONS.md
+
+PWA.md
+
+Each document must reflect the actual implementation.
+
+====================================================
+STEP 5 — REPOSITORY QUALITY
+====================================================
+
+Review:
+
+folder names
+
+file names
+
+dead files
+
+unused docs
+
+duplicate docs
+
+missing documentation
+
+repository consistency
+
+Fix everything.
+
+====================================================
+STEP 6 — BADGES
+====================================================
+
+Add professional badges including:
+
+TypeScript
+
+Next.js
+
+Firebase
+
+ESP32
+
+PWA
+
+MIT License
+
+GitHub Stars
+
+Last Commit
+
+Build Status (only if workflow exists)
+
+====================================================
+STEP 7 — SCREENSHOTS
+====================================================
+
+Inspect the application.
+
+If screenshots are missing:
+
+Create screenshots/README.md explaining required screenshots.
+
+Insert screenshot placeholders in README.
+
+Do not fabricate screenshots.
+
+====================================================
+STEP 8 — HONESTY
+====================================================
+
+Never claim:
+
+hardware tested
+
+Firebase deployed
+
+100 Lighthouse
+
+OTA working
+
+Push notifications working
+
+ESP32 verified
+
+unless they truly exist.
+
+Clearly separate:
+
+Implemented
+
+Designed
+
+Requires Deployment
+
+Requires Hardware
+
+Future Work
+
+====================================================
+FINAL DELIVERABLE
+====================================================
+
+When finished provide:
+
+1. Repository score before improvements
+
+2. Repository score after improvements
+
+3. Files modified
+
+4. Files created
+
+5. Missing items remaining
+
+6. GitHub readiness score
+
+7. Open-source quality score
+
+The goal is for this repository to look like a premium engineering project suitable for the vivo Ignite Innovation Challenge 2026 and attractive to recruiters, judges, and contributors.
+
+Work directly in the repository and modify files as needed.
