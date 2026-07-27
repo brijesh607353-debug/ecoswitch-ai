@@ -1,0 +1,92 @@
+<svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="800" height="480" fill="#0f172a" rx="12"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="800" height="52" fill="#1e293b" rx="12"/>
+  <rect x="0" y="40" width="800" height="12" fill="#1e293b"/>
+  <circle cx="26" cy="26" r="10" fill="#16a34a"/>
+  <text x="44" y="31" fill="#f8fafc" font-size="14" font-weight="700">EcoSwitch AI</text>
+  <text x="680" y="31" fill="#94a3b8" font-size="12">Energy Dashboard</text>
+  <rect x="740" y="14" width="48" height="24" rx="12" fill="#16a34a"/>
+  <text x="764" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="600">Live</text>
+
+  <!-- Sidebar -->
+  <rect x="0" y="52" width="180" height="428" fill="#1e293b"/>
+  <rect x="12" y="72" width="156" height="36" rx="6" fill="#16a34a" fill-opacity="0.2"/>
+  <text x="28" y="95" fill="#86efac" font-size="12" font-weight="600">📊 Dashboard</text>
+  <text x="28" y="130" fill="#64748b" font-size="12">📱 Devices</text>
+  <text x="28" y="158" fill="#64748b" font-size="12">⚡ Energy</text>
+  <text x="28" y="186" fill="#64748b" font-size="12">📈 Analytics</text>
+  <text x="28" y="214" fill="#64748b" font-size="12">📄 Reports</text>
+  <text x="28" y="242" fill="#64748b" font-size="12">🔔 Alerts</text>
+  <text x="28" y="270" fill="#64748b" font-size="12">⚙️ Settings</text>
+  <text x="90" y="440" text-anchor="middle" fill="#334155" font-size="10">brijesh607353-debug</text>
+
+  <!-- Main content area -->
+  <!-- Stat cards row -->
+  <rect x="196" y="68" width="140" height="80" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="210" y="90" fill="#64748b" font-size="10">Total Usage Today</text>
+  <text x="210" y="115" fill="#f8fafc" font-size="24" font-weight="700">--</text>
+  <text x="210" y="132" fill="#64748b" font-size="10">kWh · Pending data</text>
+
+  <rect x="346" y="68" width="140" height="80" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="360" y="90" fill="#64748b" font-size="10">Monthly Cost</text>
+  <text x="360" y="115" fill="#f8fafc" font-size="24" font-weight="700">--</text>
+  <text x="360" y="132" fill="#64748b" font-size="10">£ · Pending data</text>
+
+  <rect x="496" y="68" width="140" height="80" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="510" y="90" fill="#64748b" font-size="10">CO₂ Saved</text>
+  <text x="510" y="115" fill="#f8fafc" font-size="24" font-weight="700">--</text>
+  <text x="510" y="132" fill="#64748b" font-size="10">kg · Pending data</text>
+
+  <rect x="646" y="68" width="138" height="80" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="660" y="90" fill="#64748b" font-size="10">Active Devices</text>
+  <text x="660" y="115" fill="#f8fafc" font-size="24" font-weight="700">--</text>
+  <text x="660" y="132" fill="#64748b" font-size="10">IoT · Pending</text>
+
+  <!-- Chart area -->
+  <rect x="196" y="162" width="440" height="200" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="216" y="184" fill="#f8fafc" font-size="12" font-weight="600">Energy Consumption — 24h</text>
+  <!-- Chart grid lines -->
+  <line x1="210" y1="220" x2="620" y2="220" stroke="#1e293b" stroke-width="1"/>
+  <line x1="210" y1="250" x2="620" y2="250" stroke="#334155" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="210" y1="280" x2="620" y2="280" stroke="#334155" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="210" y1="310" x2="620" y2="310" stroke="#334155" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="210" y1="340" x2="620" y2="340" stroke="#334155" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Placeholder chart bars -->
+  <rect x="220" y="290" width="28" height="60" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <rect x="258" y="270" width="28" height="80" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <rect x="296" y="240" width="28" height="110" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <rect x="334" y="260" width="28" height="90" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <rect x="372" y="280" width="28" height="70" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <rect x="410" y="300" width="28" height="50" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <rect x="448" y="250" width="28" height="100" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <rect x="486" y="270" width="28" height="80" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <rect x="524" y="220" width="28" height="130" rx="4" fill="#16a34a" fill-opacity="0.5"/>
+  <rect x="562" y="260" width="28" height="90" rx="4" fill="#16a34a" fill-opacity="0.3"/>
+  <!-- "Coming soon" overlay -->
+  <rect x="196" y="162" width="440" height="200" rx="8" fill="#0f172a" fill-opacity="0.5"/>
+  <text x="416" y="252" text-anchor="middle" fill="#475569" font-size="13" font-weight="600">📌 Dashboard · Planned for v0.4.0</text>
+  <text x="416" y="272" text-anchor="middle" fill="#334155" font-size="11">Requires database schema (v0.2.0) + Firebase (v0.3.0)</text>
+
+  <!-- Device list -->
+  <rect x="646" y="162" width="138" height="200" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="666" y="184" fill="#f8fafc" font-size="11" font-weight="600">Devices</text>
+  <rect x="658" y="194" width="114" height="36" rx="5" fill="#0f172a" stroke="#334155"/>
+  <text x="666" y="213" fill="#64748b" font-size="9">Living Room</text>
+  <text x="666" y="225" fill="#475569" font-size="8">ESP32 · 📌 Planned</text>
+  <rect x="658" y="238" width="114" height="36" rx="5" fill="#0f172a" stroke="#334155"/>
+  <text x="666" y="257" fill="#64748b" font-size="9">Kitchen</text>
+  <text x="666" y="269" fill="#475569" font-size="8">ESP32 · 📌 Planned</text>
+  <rect x="658" y="282" width="114" height="36" rx="5" fill="#0f172a" stroke="#334155"/>
+  <text x="666" y="301" fill="#64748b" font-size="9">Office</text>
+  <text x="666" y="313" fill="#475569" font-size="8">ESP32 · 📌 Planned</text>
+
+  <!-- Bottom strip -->
+  <rect x="196" y="374" width="440" height="80" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="416" y="400" text-anchor="middle" fill="#64748b" font-size="11">📡 API Status</text>
+  <rect x="210" y="410" width="160" height="32" rx="5" fill="#0f172a" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="290" y="430" text-anchor="middle" fill="#86efac" font-size="10">✅ GET /api/healthz — 200 OK</text>
+  <rect x="380" y="410" width="242" height="32" rx="5" fill="#0f172a" stroke="#334155" stroke-dasharray="3,3"/>
+  <text x="500" y="430" text-anchor="middle" fill="#475569" font-size="10">📌 POST /api/readings — Planned v0.5.0</text>
+</svg>

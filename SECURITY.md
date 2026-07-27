@@ -11,8 +11,8 @@ If you discover a security vulnerability, report it privately so we can fix it b
 **Option 1 — GitHub Private Vulnerability Reporting (preferred)**
 Use [GitHub's private security advisory feature](https://github.com/brijesh607353-debug/ecoswitch-ai/security/advisories/new).
 
-**Option 2 — Email**
-Send a report to: `security@ecoswitch.ai` *(replace with your actual contact)*
+**Option 2 — Direct message**
+Reach the maintainer directly via [GitHub profile](https://github.com/brijesh607353-debug).
 
 Please include:
 

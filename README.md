@@ -1,393 +1,552 @@
 <div align="center">
 
-<img src="./screenshots/logo-placeholder.png" alt="EcoSwitch AI Logo" width="120" />
-
 # ⚡ EcoSwitch AI
 
-### Smart Energy Waste Reduction System
-
-**Built for the vivo Ignite Innovation Challenge 2026**
+**Smart Energy Waste Reduction System**<br/>
+*Built for the vivo Ignite Innovation Challenge 2026*
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-24-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)](https://expressjs.com/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![pnpm](https://img.shields.io/badge/pnpm-workspace-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 [![Firebase](https://img.shields.io/badge/Firebase-planned-FFCA28?logo=firebase&logoColor=black)](#firebase-setup)
-[![PWA](https://img.shields.io/badge/PWA-planned-5A0FC8?logo=pwa&logoColor=white)](#pwa-features)
+[![PWA](https://img.shields.io/badge/PWA-planned-5A0FC8)](#pwa-features)
 [![ESP32](https://img.shields.io/badge/ESP32-planned-E7352C?logo=espressif&logoColor=white)](#iot-architecture)
-[![License: MIT](https://img.shields.io/badge/License-MIT-16a34a?logo=opensourceinitiative&logoColor=white)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-16a34a)](./LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/brijesh607353-debug/ecoswitch-ai/ci.yml?label=CI)](https://github.com/brijesh607353-debug/ecoswitch-ai/actions)
 [![Last Commit](https://img.shields.io/github/last-commit/brijesh607353-debug/ecoswitch-ai)](https://github.com/brijesh607353-debug/ecoswitch-ai/commits/main)
-[![GitHub Stars](https://img.shields.io/github/stars/brijesh607353-debug/ecoswitch-ai?style=social)](https://github.com/brijesh607353-debug/ecoswitch-ai)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](./CONTRIBUTING.md)
 
-<br />
+<br/>
 
-> **⚠️ Status: Active Development** — Core API and data layer are in place. Dashboard, Firebase integration, IoT layer, and PWA features are under active development.
+> **Status: Active Development** — API layer, codegen pipeline, and database scaffolding are complete. Dashboard, Firebase, IoT, and PWA are next.
 
-<br />
+<br/>
 
-[📖 Architecture](./docs/ARCHITECTURE.md) · [🔥 Firebase Guide](./docs/FIREBASE.md) · [🔌 IoT Guide](./docs/IOT.md) · [📡 API Reference](./docs/API.md) · [🐛 Report Bug](https://github.com/brijesh607353-debug/ecoswitch-ai/issues/new?template=bug_report.yml) · [✨ Request Feature](https://github.com/brijesh607353-debug/ecoswitch-ai/issues/new?template=feature_request.yml)
+[📖 Docs](./docs/) · [🏗 Architecture](./docs/ARCHITECTURE.md) · [📡 API](./docs/API.md) · [🗺 Roadmap](./docs/ROADMAP.md) · [🐛 Issues](https://github.com/brijesh607353-debug/ecoswitch-ai/issues) · [💬 Discussions](https://github.com/brijesh607353-debug/ecoswitch-ai/discussions)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [About the Project](#about-the-project)
+- [About](#about)
+- [Screenshots](#screenshots)
+- [Architecture](#architecture)
 - [Implementation Status](#implementation-status)
-- [Architecture Overview](#architecture-overview)
-- [Technology Stack](#technology-stack)
+- [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [API Reference](#api-reference)
-- [Firebase Setup](#firebase-setup)
-- [IoT Architecture](#iot-architecture)
-- [PWA Features](#pwa-features)
-- [Dashboard Features](#dashboard-features)
+- [Development Workflow](#development-workflow)
+- [Troubleshooting](#troubleshooting)
 - [Roadmap](#roadmap)
-- [Known Limitations](#known-limitations)
+- [FAQ](#faq)
 - [Contributing](#contributing)
-- [Security](#security)
+- [Acknowledgements](#acknowledgements)
 - [License](#license)
 
 ---
 
-## 🌍 About the Project
+## About
 
-**EcoSwitch AI** is a smart energy waste reduction system designed to help households and businesses monitor, analyse, and reduce their energy consumption. By combining an IoT sensor layer (ESP32), a real-time cloud backend (Firebase), and an AI-driven recommendation engine, EcoSwitch AI surfaces actionable insights that lead to lower bills and a smaller carbon footprint.
+**EcoSwitch AI** monitors household and business energy consumption through IoT sensors (ESP32), surfaces AI-driven insights to reduce waste, and helps users switch to greener energy plans — all from a single real-time dashboard.
 
-Submitted to the **vivo Ignite Innovation Challenge 2026** — a competition recognising innovative, impact-driven software engineering projects.
-
----
-
-## ✅ Implementation Status
-
-This section is the single source of truth for what is and is not in the codebase. It is updated with every release.
-
-### Implemented
-
-| Feature | Status | Notes |
-|---------|--------|-------|
-| pnpm monorepo workspace | ✅ Complete | `artifacts/`, `lib/`, `scripts/` |
-| Express 5 REST API server | ✅ Complete | TypeScript strict, Pino logging |
-| OpenAPI 3.1 contract | ✅ Complete | `lib/api-spec/openapi.yaml` |
-| Orval codegen pipeline | ✅ Complete | Generates React Query hooks + Zod schemas |
-| React Query client hooks | ✅ Complete | Auto-generated from OpenAPI spec |
-| Zod validation schemas | ✅ Complete | Auto-generated from OpenAPI spec |
-| PostgreSQL + Drizzle ORM | ✅ Scaffolded | Connection layer ready; tables not yet defined |
-| React + Vite UI sandbox | ✅ Complete | 50+ shadcn/ui components available |
-| `GET /api/healthz` endpoint | ✅ Complete | Returns `{ status: "ok" }` |
-| Structured logging (Pino) | ✅ Complete | JSON in production, pretty-print in dev |
-| Client-side auth token hook | ✅ Stub | `setAuthTokenGetter` in `custom-fetch.ts` |
-
-### Planned / In Active Development
-
-| Feature | Status | Blocker |
-|---------|--------|---------|
-| Database schema (tables) | 🔨 In design | None — next milestone |
-| Firebase Authentication | 🔨 Planned | Firebase project setup required |
-| Firebase Firestore | 🔨 Planned | Firebase project setup required |
-| Energy consumption dashboard | 🔨 Planned | Requires DB schema + Firebase |
-| Real-time analytics | 🔨 Planned | Requires dashboard |
-| PDF report export | 🔨 Planned | Requires dashboard |
-| Push notifications | 🔨 Planned | Requires Firebase Cloud Messaging |
-| Search functionality | 🔨 Planned | Requires data layer |
-| IoT integration (ESP32) | 🔨 Planned | Requires hardware + firmware |
-| PWA / Service Worker | 🔨 Planned | Requires frontend build |
-| Offline support | 🔨 Planned | Requires PWA layer |
-
-> **Integrity note:** Features are only moved to "Implemented" when the code is merged to `main`. No feature is claimed as working unless it is verifiable in this repository.
+The project follows a **contract-first API design**: every endpoint is defined in an OpenAPI 3.1 spec before it is implemented, automatically generating typed React Query hooks and Zod validation schemas across the full stack. No manual type duplication.
 
 ---
 
-## 🏗 Architecture Overview
+## Screenshots
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        EcoSwitch AI                         │
-│                                                             │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
-│  │   IoT Layer  │    │  API Layer   │    │  UI Layer    │  │
-│  │  (Planned)   │───▶│  (Express 5) │◀───│ (React+Vite) │  │
-│  │   ESP32 +    │    │  TypeScript  │    │  shadcn/ui   │  │
-│  │   Sensors    │    │  Zod + Pino  │    │  React Query │  │
-│  └──────────────┘    └──────┬───────┘    └──────────────┘  │
-│                             │                               │
-│                      ┌──────▼───────┐                       │
-│                      │  Data Layer  │                       │
-│                      │  PostgreSQL  │                       │
-│                      │  Drizzle ORM │                       │
-│                      │  (Firebase   │                       │
-│                      │   planned)   │                       │
-│                      └──────────────┘                       │
-└─────────────────────────────────────────────────────────────┘
+> Real screenshots will be added as features are implemented. SVG diagrams below show the planned UI and system structure.
+
+| System Overview | API Architecture |
+|:-:|:-:|
+| ![System Overview](./screenshots/system-overview.svg) | ![Architecture](./screenshots/architecture.svg) |
+
+| Dashboard (Planned) | Hardware Layer (Planned) |
+|:-:|:-:|
+| ![Dashboard](./screenshots/dashboard-placeholder.svg) | ![Hardware](./screenshots/hardware.svg) |
+
+---
+
+## Architecture
+
+### System Architecture
+
+```mermaid
+flowchart TB
+    subgraph iot["🔌 IoT Layer · Planned"]
+        SEN["Current + Voltage Sensors\nSCT-013 · ZMPT101B"]
+        ESP["ESP32 MCU"]
+        SEN --> ESP
+    end
+
+    subgraph backend["⚡ Backend · Implemented"]
+        API["Express 5 REST API"]
+        ZOD["Zod Validation"]
+        LOG["Pino Logger"]
+        API --> ZOD
+        API --> LOG
+    end
+
+    subgraph data["🗄️ Data Layer · Scaffolded"]
+        ORM["Drizzle ORM"]
+        PG[("PostgreSQL")]
+        FB[("Firebase Firestore\nPlanned")]
+        ORM --> PG
+    end
+
+    subgraph frontend["🖥️ Frontend · In Development"]
+        REACT["React 19 + Vite 6"]
+        UI["shadcn/ui · 50+ components"]
+        RQ["TanStack React Query"]
+        CHARTS["Recharts · Planned"]
+    end
+
+    ESP -->|"POST /api/readings · Planned"| API
+    REACT -->|"Generated React Query hooks"| API
+    ZOD --> ORM
+    API -.->|"Planned"| FB
 ```
 
-The API follows a **contract-first** design: every endpoint is defined in the OpenAPI spec (`lib/api-spec/openapi.yaml`) before implementation. This single source of truth drives automatic generation of typed React Query hooks and Zod validation schemas across the entire stack.
+### API Request Flow
 
-See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) for a detailed breakdown.
+```mermaid
+sequenceDiagram
+    participant C as React Client
+    participant A as Express API
+    participant Z as Zod Schema
+    participant D as Drizzle / PostgreSQL
+
+    C->>A: GET /api/healthz
+    A->>Z: validate response shape
+    Z-->>A: HealthStatus { status }
+    A-->>C: 200 { "status": "ok" }
+
+    Note over C,D: Future authenticated flow (planned)
+    C->>A: POST /api/readings + Bearer token
+    A->>Z: validate sensor payload
+    Z->>D: insert reading
+    D-->>A: confirmed
+    A-->>C: 201 Created
+```
+
+### Development Data Flow
+
+```mermaid
+flowchart LR
+    SPEC["lib/api-spec/\nopenapi.yaml"]
+    GEN["Orval codegen"]
+    HOOKS["lib/api-client-react/\nReact Query hooks"]
+    SCHEMAS["lib/api-zod/\nZod schemas + types"]
+    SERVER["artifacts/api-server/\nExpress route handlers"]
+    CLIENT["artifacts/mockup-sandbox/\nReact components"]
+
+    SPEC --> GEN
+    GEN --> HOOKS
+    GEN --> SCHEMAS
+    SCHEMAS --> SERVER
+    HOOKS --> CLIENT
+```
 
 ---
 
-## 🛠 Technology Stack
+## Implementation Status
 
-| Layer | Technology | Status |
-|-------|-----------|--------|
-| **Runtime** | Node.js 24 | ✅ Active |
-| **Language** | TypeScript 5.9 (strict) | ✅ Active |
-| **API Framework** | Express 5 | ✅ Active |
-| **Database** | PostgreSQL + Drizzle ORM | ✅ Scaffolded |
-| **Validation** | Zod v4 + drizzle-zod | ✅ Active |
-| **API Contract** | OpenAPI 3.1 + Orval | ✅ Active |
-| **Frontend** | React 19 + Vite 6 | ✅ Active |
-| **UI Components** | shadcn/ui + Radix UI | ✅ Active |
-| **State / Data** | TanStack React Query v5 | ✅ Active |
-| **Logging** | Pino | ✅ Active |
-| **Package Manager** | pnpm workspaces | ✅ Active |
-| **Authentication** | Firebase Auth | 🔨 Planned |
-| **Real-time DB** | Firebase Firestore | 🔨 Planned |
-| **IoT** | ESP32 + Arduino/MicroPython | 🔨 Planned |
-| **PWA** | Service Worker + Web App Manifest | 🔨 Planned |
-| **Charts** | Recharts | 🔨 Installed, not yet wired |
-| **Animation** | Framer Motion | 🔨 Installed, not yet wired |
+| Feature | Status | Since |
+|---------|:------:|-------|
+| pnpm monorepo workspace | ✅ Implemented | v0.1.0 |
+| Express 5 REST API server | ✅ Implemented | v0.1.0 |
+| OpenAPI 3.1 contract (`lib/api-spec/openapi.yaml`) | ✅ Implemented | v0.1.0 |
+| Orval codegen → React Query hooks + Zod schemas | ✅ Implemented | v0.1.0 |
+| PostgreSQL + Drizzle ORM (connection layer) | ✅ Implemented | v0.1.0 |
+| `GET /api/healthz` endpoint | ✅ Implemented | v0.1.0 |
+| Pino structured logging | ✅ Implemented | v0.1.0 |
+| 50+ shadcn/ui components (sandbox) | ✅ Implemented | v0.1.0 |
+| Client-side auth token hook (stub) | ✅ Implemented | v0.1.0 |
+| GitHub Actions CI (typecheck + prettier) | ✅ Implemented | v0.1.0 |
+| Database schema (tables) | 🚧 In Progress | v0.2.0 |
+| Device + user CRUD endpoints | 🚧 In Progress | v0.2.0 |
+| Firebase Authentication | 📌 Planned | v0.3.0 |
+| Energy consumption dashboard UI | 📌 Planned | v0.4.0 |
+| IoT sensor ingestion endpoint | 📌 Planned | v0.5.0 |
+| ESP32 firmware | 📌 Planned | v0.5.0 |
+| Analytics & reporting | 📌 Planned | v0.6.0 |
+| PDF report export | 📌 Planned | v0.6.0 |
+| Push notifications (FCM) | 📌 Planned | v0.6.0 |
+| PWA + Service Worker | 📌 Planned | v0.7.0 |
+| Offline support | 📌 Planned | v0.7.0 |
 
 ---
 
-## 📁 Project Structure
+## Tech Stack
+
+| Layer | Technology | Version | Status |
+|-------|-----------|---------|--------|
+| Runtime | Node.js | 24 | ✅ |
+| Language | TypeScript (strict) | 5.9 | ✅ |
+| API Framework | Express | 5 | ✅ |
+| Database | PostgreSQL + Drizzle ORM | — | ✅ Scaffolded |
+| Validation | Zod + drizzle-zod | v4 | ✅ |
+| API Contract | OpenAPI 3.1 + Orval | — | ✅ |
+| Frontend | React + Vite | 19 + 6 | ✅ Sandbox |
+| UI Components | shadcn/ui + Radix UI | — | ✅ |
+| Data Fetching | TanStack React Query | v5 | ✅ |
+| Logging | Pino | — | ✅ |
+| Package Manager | pnpm workspaces | 9 | ✅ |
+| Auth | Firebase Auth | — | 📌 Planned |
+| Real-time DB | Firebase Firestore | — | 📌 Planned |
+| IoT | ESP32 + sensors | — | 📌 Planned |
+| Charts | Recharts | — | 📌 Installed |
+| Animation | Framer Motion | — | 📌 Installed |
+| PWA | Vite PWA Plugin + Workbox | — | 📌 Planned |
+
+---
+
+## Project Structure
 
 ```
 ecoswitch-ai/
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.yml
+│   │   ├── feature_request.yml
+│   │   └── config.yml
+│   ├── workflows/
+│   │   └── ci.yml                  # TypeScript + Prettier CI
+│   ├── CODEOWNERS
+│   ├── dependabot.yml
+│   └── PULL_REQUEST_TEMPLATE.md
+│
 ├── artifacts/
-│   ├── api-server/              # Express 5 REST API
+│   ├── api-server/                  # ⚡ Express 5 REST API
 │   │   └── src/
-│   │       ├── app.ts           # Express app setup (CORS, logging, routing)
-│   │       ├── index.ts         # Server entry point
+│   │       ├── app.ts               # Express setup (CORS, logging, routing)
+│   │       ├── index.ts             # Entry point — binds to $PORT
 │   │       ├── routes/
-│   │       │   ├── index.ts     # Route aggregator
-│   │       │   └── health.ts    # GET /api/healthz
-│   │       ├── middlewares/     # (empty — ready for auth middleware)
-│   │       └── lib/
-│   │           └── logger.ts    # Pino logger singleton
-│   └── mockup-sandbox/          # React + Vite UI component sandbox
+│   │       │   ├── index.ts         # Route aggregator
+│   │       │   └── health.ts        # GET /api/healthz
+│   │       ├── middlewares/         # Auth, rate-limit (planned)
+│   │       └── lib/logger.ts        # Pino singleton
+│   │
+│   └── mockup-sandbox/              # 🖥️ React + Vite UI sandbox (dev only)
 │       └── src/
-│           ├── components/ui/   # 50+ shadcn/ui components
-│           └── hooks/           # use-toast, use-mobile
+│           ├── components/ui/       # 50+ shadcn/ui components
+│           └── hooks/               # use-toast, use-mobile
+│
 ├── lib/
 │   ├── api-spec/
-│   │   └── openapi.yaml         # ← OpenAPI source of truth
-│   ├── api-client-react/        # Generated: React Query hooks
-│   ├── api-zod/                 # Generated: Zod schemas + TypeScript types
+│   │   └── openapi.yaml            # ← Source of truth for all API contracts
+│   ├── api-client-react/           # Generated — React Query hooks (do not edit)
+│   ├── api-zod/                    # Generated — Zod schemas + TS types (do not edit)
 │   └── db/
-│       ├── src/schema/          # Drizzle schema (currently empty)
-│       └── drizzle.config.ts    # Drizzle Kit config
-├── scripts/                     # Utility scripts
-├── docs/                        # Extended documentation
+│       ├── src/schema/             # Drizzle table definitions (empty — v0.2.0)
+│       └── drizzle.config.ts
+│
+├── docs/                           # Extended documentation
 │   ├── ARCHITECTURE.md
 │   ├── API.md
+│   ├── DEVELOPMENT.md
+│   ├── DEPLOYMENT.md
 │   ├── FIREBASE.md
 │   ├── IOT.md
 │   ├── PWA.md
-│   ├── DEPLOYMENT.md
+│   ├── ROADMAP.md
 │   ├── TESTING.md
 │   ├── PERFORMANCE.md
-│   └── KNOWN_LIMITATIONS.md
-├── screenshots/                 # App screenshots
-├── .env.example                 # Required environment variables (no secrets)
-├── pnpm-workspace.yaml          # Workspace packages + dependency catalog
-└── tsconfig.base.json           # Shared strict TypeScript configuration
+│   ├── KNOWN_LIMITATIONS.md
+│   └── GITHUB_LABELS.md
+│
+├── screenshots/                    # App screenshots and SVG diagrams
+├── scripts/                        # Utility scripts
+│
+├── .env.example                    # All required env vars (no secrets)
+├── .gitignore                      # Node, Next.js, Firebase, pnpm, Replit
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE                         # MIT
+├── SECURITY.md
+├── pnpm-workspace.yaml             # Workspace packages + dependency catalog
+└── tsconfig.base.json              # Shared strict TypeScript config
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- **Node.js** ≥ 20 ([download](https://nodejs.org/))
-- **pnpm** ≥ 9 — `npm install -g pnpm`
-- **PostgreSQL** ≥ 15 ([download](https://www.postgresql.org/download/))
+| Tool | Version | Install |
+|------|---------|---------|
+| Node.js | ≥ 20 | [nodejs.org](https://nodejs.org/) |
+| pnpm | ≥ 9 | `npm install -g pnpm` |
+| PostgreSQL | ≥ 15 | [postgresql.org](https://www.postgresql.org/download/) |
 
-### Installation
+### 1. Clone and Install
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/brijesh607353-debug/ecoswitch-ai.git
 cd ecoswitch-ai
-
-# 2. Install all workspace dependencies
 pnpm install
-
-# 3. Set up environment variables
-cp .env.example .env.local
-# Fill in your values — see Environment Variables section
 ```
 
-### Development
+### 2. Configure Environment
 
 ```bash
-# Start the API server (port from $PORT, default 5000)
-pnpm --filter @workspace/api-server run dev
-
-# After editing lib/api-spec/openapi.yaml — regenerate hooks & schemas
-pnpm --filter @workspace/api-spec run codegen
-
-# Push DB schema changes to your local database (development only)
-pnpm --filter @workspace/db run push
-
-# Full TypeScript check across all packages
-pnpm run typecheck
-
-# Build all packages
-pnpm run build
+cp .env.example .env.local
 ```
 
-### Verify the API is running
+Minimum required values for local development:
+
+```env
+DATABASE_URL=postgresql://postgres:password@localhost:5432/ecoswitch
+SESSION_SECRET=your-random-secret-here
+```
+
+Generate a secure session secret:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+### 3. Push Database Schema
+
+```bash
+pnpm --filter @workspace/db run push
+```
+
+> Note: the schema is currently empty (v0.1.0). This creates the connection and verifies `DATABASE_URL` is valid.
+
+### 4. Start the API Server
+
+```bash
+pnpm --filter @workspace/api-server run dev
+```
+
+### 5. Verify
 
 ```bash
 curl http://localhost:5000/api/healthz
-# → {"status":"ok"}
+# {"status":"ok"}
 ```
 
 ---
 
-## 🔐 Environment Variables
+## Development Workflow
 
-Copy `.env.example` to `.env.local` and fill in your values. See [`.env.example`](./.env.example) for descriptions.
+### API Changes (contract-first)
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `DATABASE_URL` | ✅ | PostgreSQL connection string |
-| `SESSION_SECRET` | ✅ | Random secret for session signing |
-| `PORT` | Optional | API server port (default: 5000) |
-| `NODE_ENV` | Optional | `development` / `production` |
-| `NEXT_PUBLIC_FIREBASE_*` | 🔨 Planned | Firebase project configuration |
-| `FIREBASE_ADMIN_CREDENTIAL` | 🔨 Planned | Firebase Admin SDK (server-side) |
-| `OPENAI_API_KEY` | 🔨 Planned | AI recommendation engine |
+```bash
+# 1. Edit the OpenAPI spec — this is the source of truth
+$EDITOR lib/api-spec/openapi.yaml
 
-> **Never commit `.env.local`** — it is git-ignored. Rotate any credential immediately if accidentally exposed.
+# 2. Regenerate React Query hooks and Zod schemas
+pnpm --filter @workspace/api-spec run codegen
 
----
-
-## 📡 API Reference
-
-The full contract lives in [`lib/api-spec/openapi.yaml`](./lib/api-spec/openapi.yaml). See [docs/API.md](./docs/API.md) for detailed usage examples.
-
-### Implemented Endpoints
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `GET` | `/api/healthz` | None | Server health check |
-
-### Planned Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/auth/register` | User registration |
-| `POST` | `/api/auth/login` | User login |
-| `GET` | `/api/devices` | List connected IoT devices |
-| `GET` | `/api/energy` | Energy consumption data |
-| `GET` | `/api/analytics` | Usage analytics and trends |
-| `POST` | `/api/reports` | Generate PDF report |
-
----
-
-## 🔥 Firebase Setup
-
-> **Status: Planned** — Firebase integration is not yet implemented. The environment variable placeholders and project structure are ready.
-
-See [docs/FIREBASE.md](./docs/FIREBASE.md) for the planned integration guide.
-
----
-
-## 🔌 IoT Architecture
-
-> **Status: Planned** — Requires ESP32 hardware and firmware development.
-
-See [docs/IOT.md](./docs/IOT.md) for the planned ESP32 integration architecture.
-
----
-
-## 📱 PWA Features
-
-> **Status: Planned** — Progressive Web App features including offline support and installability.
-
-See [docs/PWA.md](./docs/PWA.md) for the planned PWA implementation guide.
-
----
-
-## 📊 Dashboard Features
-
-> **Status: Planned** — The UI component library (shadcn/ui, Recharts, Framer Motion) is installed and available; the dashboard is not yet implemented.
-
-Planned dashboard capabilities:
-- Real-time energy consumption charts
-- Device-level breakdown
-- Cost vs. CO₂ toggle
-- Historical trend comparisons
-- Anomaly alerts
-
----
-
-## 🗺 Roadmap
-
+# 3. Implement the Express route handler (schemas are now available)
+# 4. Wire the hook in the frontend
 ```
-v0.1.0  ✅  Monorepo scaffold, Express API, OpenAPI pipeline, DB layer
-v0.2.0  🔨  Database schema + CRUD endpoints for devices and readings
-v0.3.0  🔨  Firebase Auth + user management
-v0.4.0  🔨  Energy dashboard UI (Recharts)
-v0.5.0  🔨  IoT ingestion endpoint + ESP32 firmware
-v0.6.0  🔨  Analytics, reports, PDF export
-v0.7.0  🔨  PWA + Service Worker + offline support
-v1.0.0  🔨  Production-ready release
+
+> **Do not edit** `lib/api-client-react/src/generated/` or `lib/api-zod/src/generated/` directly — they are overwritten on every codegen run.
+
+### Database Schema Changes
+
+```bash
+# 1. Add or edit a table in lib/db/src/schema/
+# 2. Push to your local database (development only)
+pnpm --filter @workspace/db run push
+
+# 3. Generate a migration file (for production deployments)
+pnpm --filter @workspace/db run generate
+```
+
+### TypeScript Check
+
+```bash
+# Full check across all packages (run before every commit)
+pnpm run typecheck
+```
+
+### Formatting
+
+```bash
+# Format all files
+pnpm prettier --write .
+
+# Check only (used in CI)
+pnpm prettier --check .
+```
+
+### Build
+
+```bash
+# Build all packages (typecheck + esbuild bundle)
+pnpm run build
 ```
 
 ---
 
-## ⚠️ Known Limitations
+## Troubleshooting
 
-See [docs/KNOWN_LIMITATIONS.md](./docs/KNOWN_LIMITATIONS.md) for the full list. Key points:
+### `DATABASE_URL` connection error on startup
 
-- **No database tables yet** — Drizzle schema is scaffolded but empty
-- **No authentication** — API endpoints are currently unauthenticated
-- **No IoT hardware tested** — ESP32 integration is in design phase
-- **Firebase not connected** — Only env var placeholders exist
-- **PWA not implemented** — No service worker or web app manifest
+```
+Error: connect ECONNREFUSED 127.0.0.1:5432
+```
 
----
+**Fix:** PostgreSQL is not running. Start it with:
+```bash
+# macOS (Homebrew)
+brew services start postgresql@15
 
-## 🤝 Contributing
+# Ubuntu/Debian
+sudo systemctl start postgresql
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, branch naming, commit conventions, and the PR process.
-
-All contributors must follow our [Code of Conduct](./CODE_OF_CONDUCT.md).
-
----
-
-## 🔒 Security
-
-Report vulnerabilities privately — see [SECURITY.md](./SECURITY.md). Do not open public issues for security bugs.
+# Windows
+pg_ctl -D "C:\Program Files\PostgreSQL\15\data" start
+```
 
 ---
 
-## 📝 Changelog
+### Port already in use
 
-Full history in [CHANGELOG.md](./CHANGELOG.md).
+```
+Error: listen EADDRINUSE: address already in use :::5000
+```
+
+**Fix:** Set a different port:
+```bash
+PORT=5001 pnpm --filter @workspace/api-server run dev
+```
 
 ---
 
-## 📄 License
+### Codegen produces no output or empty files
 
-MIT License — see [LICENSE](./LICENSE).
+**Cause:** The OpenAPI spec has a syntax error.
+
+**Fix:** Validate the spec first:
+```bash
+npx @redocly/cli lint lib/api-spec/openapi.yaml
+```
+
+---
+
+### TypeScript errors after codegen
+
+**Cause:** Stale compiled lib declarations.
+
+**Fix:**
+```bash
+pnpm run typecheck:libs  # rebuilds lib/* declarations
+pnpm run typecheck       # full check
+```
+
+---
+
+### `pnpm install` fails with frozen lockfile error
+
+**Fix:** You likely have uncommitted lockfile changes. Either commit them or run:
+```bash
+pnpm install --no-frozen-lockfile
+```
+Then commit the updated `pnpm-lock.yaml`.
+
+---
+
+## Roadmap
+
+See [docs/ROADMAP.md](./docs/ROADMAP.md) for the detailed milestone breakdown.
+
+```
+v0.1.0  ✅  Monorepo · Express API · OpenAPI pipeline · DB scaffolding · CI
+v0.2.0  🚧  Database schema · Device/user/reading tables · CRUD endpoints
+v0.3.0  📌  Firebase Auth · Protected routes · Session management
+v0.4.0  📌  Energy dashboard · Recharts integration · Real-time data
+v0.5.0  📌  IoT ingestion endpoint · ESP32 firmware · Sensor simulator
+v0.6.0  📌  Analytics · PDF reports · Push notifications (FCM)
+v0.7.0  📌  PWA · Service Worker · Offline support · Installable
+v1.0.0  📌  Production-ready · Performance-tuned · Full test coverage
+```
+
+---
+
+## FAQ
+
+**Q: Why Express 5 instead of Next.js API routes?**  
+A: The monorepo keeps frontend and backend independently deployable. Express 5 gives full control over middleware, logging, and the API contract. Next.js is referenced in `.env.example` variable names only — the project is Vite + Express.
+
+**Q: Why OpenAPI-first / codegen instead of tRPC or GraphQL?**  
+A: OpenAPI produces a language-agnostic contract that the ESP32 firmware and any future mobile app can consume. tRPC ties you to TypeScript on both ends; GraphQL adds runtime overhead for a REST IoT use-case.
+
+**Q: Is Firebase required to run locally?**  
+A: No. Firebase is planned for v0.3.0. All Firebase environment variables in `.env.example` are optional for local development.
+
+**Q: Why pnpm workspaces?**  
+A: Monorepo tooling lets shared code (`lib/db`, `lib/api-zod`) be consumed by multiple packages without publishing to npm, while keeping each package independently typed and buildable.
+
+**Q: Can I contribute even if ESP32 hardware is not implemented yet?**  
+A: Yes — most open work is in the API, database schema, and dashboard (no hardware needed). See issues labelled [`good first issue`](https://github.com/brijesh607353-debug/ecoswitch-ai/labels/good%20first%20issue).
+
+**Q: Why Drizzle ORM over Prisma?**  
+A: Drizzle is TypeScript-native, produces no generated client at runtime, and integrates directly with `drizzle-zod` for schema-derived Zod types — keeping the validation pipeline fully unified.
+
+---
+
+## Contributing
+
+Read [CONTRIBUTING.md](./CONTRIBUTING.md) for the full development setup, branch naming, commit conventions (Conventional Commits), and PR process.
+
+All contributors are expected to follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+Quick start:
+
+```bash
+# Fork the repo, then:
+git clone https://github.com/<your-username>/ecoswitch-ai.git
+git checkout -b feat/your-feature
+# make changes
+pnpm run typecheck
+git commit -m "feat: describe your change"
+git push origin feat/your-feature
+# open a Pull Request
+```
+
+---
+
+## Acknowledgements
+
+| Tool / Project | Role in EcoSwitch AI |
+|---------------|----------------------|
+| [Express](https://expressjs.com/) | REST API framework |
+| [Drizzle ORM](https://orm.drizzle.team/) | Type-safe database access |
+| [Orval](https://orval.dev/) | OpenAPI → React Query codegen |
+| [shadcn/ui](https://ui.shadcn.com/) | Component library (50+ components) |
+| [TanStack Query](https://tanstack.com/query) | Server state management |
+| [Zod](https://zod.dev/) | Runtime schema validation |
+| [Pino](https://getpino.io/) | High-performance structured logging |
+| [Vite](https://vitejs.dev/) | Frontend build tool |
+| [Radix UI](https://www.radix-ui.com/) | Accessible component primitives |
+| [vivo Ignite Challenge](https://www.vivo.com/) | Competition motivating this project |
+
+---
+
+## License
+
+MIT © 2026 [EcoSwitch AI Contributors](https://github.com/brijesh607353-debug/ecoswitch-ai/graphs/contributors)
+
+See [LICENSE](./LICENSE) for the full text.
 
 ---
 
 <div align="center">
 
-**EcoSwitch AI** — Built for the vivo Ignite Innovation Challenge 2026
+Built for the **vivo Ignite Innovation Challenge 2026**
 
-[⭐ Star this repo](https://github.com/brijesh607353-debug/ecoswitch-ai) · [🐛 Open an Issue](https://github.com/brijesh607353-debug/ecoswitch-ai/issues) · [💬 Discussions](https://github.com/brijesh607353-debug/ecoswitch-ai/discussions)
+[⭐ Star this repo](https://github.com/brijesh607353-debug/ecoswitch-ai) · [🐛 Open an Issue](https://github.com/brijesh607353-debug/ecoswitch-ai/issues) · [💬 Start a Discussion](https://github.com/brijesh607353-debug/ecoswitch-ai/discussions)
 
 </div>

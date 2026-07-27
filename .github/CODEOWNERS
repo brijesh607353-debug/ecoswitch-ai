@@ -1,0 +1,28 @@
+# CODEOWNERS — EcoSwitch AI
+#
+# These owners are automatically requested for review on PRs
+# that touch the listed paths.
+#
+# Format: <pattern> <owner> [<owner2> ...]
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything not matched below
+* @brijesh607353-debug
+
+# OpenAPI spec — any change requires careful review (drives all codegen)
+lib/api-spec/openapi.yaml @brijesh607353-debug
+
+# Generated files — should only change via codegen, not manual edits
+lib/api-client-react/src/generated/ @brijesh607353-debug
+lib/api-zod/src/generated/ @brijesh607353-debug
+
+# Database schema — migrations must be reviewed carefully
+lib/db/src/schema/ @brijesh607353-debug
+lib/db/drizzle.config.ts @brijesh607353-debug
+
+# CI and GitHub config — any change to pipelines requires review
+.github/ @brijesh607353-debug
+
+# Security-sensitive files
+SECURITY.md @brijesh607353-debug
+artifacts/api-server/src/middlewares/ @brijesh607353-debug

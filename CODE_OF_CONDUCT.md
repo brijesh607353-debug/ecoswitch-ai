@@ -61,7 +61,7 @@ representative at an online or offline event.
 Instances of abusive, harassing, or otherwise unacceptable behaviour may be
 reported to the community leaders responsible for enforcement at:
 
-**conduct@ecoswitch.ai** *(replace with your actual contact email)*
+**[Open a GitHub Discussion](https://github.com/brijesh607353-debug/ecoswitch-ai/discussions/new?category=general)** or contact the maintainer via their [GitHub profile](https://github.com/brijesh607353-debug).
 
 All complaints will be reviewed and investigated promptly and fairly.
 

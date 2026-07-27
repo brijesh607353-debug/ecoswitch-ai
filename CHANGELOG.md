@@ -76,3 +76,4 @@ Initial scaffolding commit for the EcoSwitch AI project.
 
 [Unreleased]: https://github.com/brijesh607353-debug/ecoswitch-ai/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/brijesh607353-debug/ecoswitch-ai/releases/tag/v0.1.0
+

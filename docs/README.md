@@ -1,38 +1,43 @@
 # EcoSwitch AI — Documentation
 
-This folder contains in-depth technical documentation for EcoSwitch AI.
+Technical documentation for the EcoSwitch AI project. Every document reflects the actual codebase — status labels make it clear what exists and what is planned.
 
 ---
 
 ## Index
 
 | Document | Status | Description |
-|----------|--------|-------------|
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | ✅ Current | Monorepo layout, system design, contract-first API pattern |
+|----------|:------:|-------------|
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | ✅ Current | Monorepo layout, Mermaid system diagrams, contract-first API pattern |
 | [API.md](./API.md) | ✅ Current | Endpoint reference, codegen workflow, planned routes |
-| [FIREBASE.md](./FIREBASE.md) | 🔨 Planned | Firebase setup guide (integration not yet implemented) |
-| [IOT.md](./IOT.md) | 🔨 Planned | ESP32 sensor integration architecture |
-| [PWA.md](./PWA.md) | 🔨 Planned | Progressive Web App implementation plan |
-| [DEPLOYMENT.md](./DEPLOYMENT.md) | ✅ Current | API server and database deployment (Docker, Railway, VPS) |
-| [TESTING.md](./TESTING.md) | 🔨 Planned | Testing strategy and setup (no tests exist yet) |
-| [PERFORMANCE.md](./PERFORMANCE.md) | ✅ Current | Built-in performance choices + planned benchmarks |
+| [DEVELOPMENT.md](./DEVELOPMENT.md) | ✅ Current | Day-to-day development commands, workflow, monorepo rules |
+| [DEPLOYMENT.md](./DEPLOYMENT.md) | ✅ Current | Docker, Railway, VPS deployment for the Express API |
+| [ROADMAP.md](./ROADMAP.md) | ✅ Current | Milestone plan v0.1.0 → v1.0.0 with status per item |
+| [FIREBASE.md](./FIREBASE.md) | 📌 Planned | Firebase setup guide (not yet integrated) |
+| [IOT.md](./IOT.md) | 📌 Planned | ESP32 hardware integration architecture |
+| [PWA.md](./PWA.md) | 📌 Planned | Progressive Web App implementation plan |
+| [TESTING.md](./TESTING.md) | 📌 Planned | Testing strategy (no tests exist yet) |
+| [PERFORMANCE.md](./PERFORMANCE.md) | ✅ Current | Built-in Pino choices + planned benchmarks |
 | [KNOWN_LIMITATIONS.md](./KNOWN_LIMITATIONS.md) | ✅ Current | Honest record of what is not yet implemented |
+| [GITHUB_LABELS.md](./GITHUB_LABELS.md) | ✅ Current | Issue and PR label taxonomy |
 
 ---
 
 ## Quick Links
 
-- [Main README](../README.md) — project overview and getting started
-- [OpenAPI Spec](../lib/api-spec/openapi.yaml) — single source of truth for API contracts
+- [Main README](../README.md) — project overview, architecture diagrams, getting started
+- [OpenAPI Spec](../lib/api-spec/openapi.yaml) — single source of truth for all API contracts
 - [Contributing Guide](../CONTRIBUTING.md)
 - [Security Policy](../SECURITY.md)
 - [Changelog](../CHANGELOG.md)
+- [Roadmap](./ROADMAP.md)
 
 ---
 
-## Adding Documentation
+## Documentation Standards
 
-1. Create a Markdown file in this `docs/` folder
-2. Add it to the index table above with its status
-3. Link to it from the relevant section of the main README
-4. Only document what **actually exists** — use status labels (`✅ Current`, `🔨 Planned`) to be explicit
+1. **Only document what exists** — use `✅ Implemented`, `🚧 In Progress`, `📌 Planned` labels
+2. **Keep docs close to code** — package-specific docs can live inside that package folder too
+3. **Update CHANGELOG.md** on every meaningful change
+4. **Update this index** when adding a new doc
+5. **Never claim** hardware tested, Lighthouse scores, or live deployments unless verifiable

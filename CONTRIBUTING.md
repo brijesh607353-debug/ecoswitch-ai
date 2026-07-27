@@ -56,7 +56,7 @@ Look for issues labelled:
 
 ```bash
 # 1. Fork the repo on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/ecoswitch-ai.git
+git clone https://github.com/<your-github-username>/ecoswitch-ai.git
 cd ecoswitch-ai
 
 # 2. Add the upstream remote
